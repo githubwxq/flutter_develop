@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop/model/TabItems.dart';
 import 'package:flutter_develop/page/network_page.dart';
-import 'package:flutter_develop/widget/container_page.dart';
-import 'package:flutter_develop/widget/text_page.dart';
+import 'package:flutter_develop/widget/single.dart';
 
 class WidgetPage extends StatefulWidget {
   final String type;
@@ -18,7 +17,12 @@ class _WidgetPageState extends State<WidgetPage>
   final String type;
   List<TabItems> tabItems = [
     TabItems("text", new TextPage()),
+    TabItems("TextField", new TextFieldPage()),
+    TabItems("image", new ImagePage()),
     TabItems("container", new ContainerPage()),
+    TabItems("AspectRatioPage", new AspectRatioPage()),
+    TabItems("AspectRatioPage", new AspectRatioPage()),
+
     TabItems("padding", new NetWorkPage("padding")),
     TabItems("banner", new NetWorkPage("text")),
     TabItems("viewpage", new NetWorkPage("text")),
