@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_develop/model/TabItems.dart';
 import 'package:flutter_develop/page/network_page.dart';
 import 'package:flutter_develop/widget/single.dart';
+import 'package:flutter_develop/widget/multi.dart';
 
 class WidgetPage extends StatefulWidget {
   final String type;
@@ -19,6 +20,7 @@ class _WidgetPageState extends State<WidgetPage>
     TabItems("text", new TextPage()),
     TabItems("TextField", new TextFieldPage()),
     TabItems("image", new ImagePage()),
+    TabItems("listview", new ListViewPage()),
     TabItems("container", new ContainerPage()),
     TabItems("AspectRatioPage", new AspectRatioPage()),
     TabItems("AspectRatioPage", new AspectRatioPage()),
