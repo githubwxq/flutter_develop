@@ -1,9 +1,22 @@
+import 'package:flutter_develop/http/banner_dao.dart';
+import 'package:flutter_develop/http/home_banner_model.dart';
+
 void main(){
   timeout();
-  _onRefresh();
+ _onRefresh();
   testFuture();
   testFutureCreate2();
   print("111221");
+  BannerDao.fetch().then((model){
+    model.data.forEach((item){
+      print(item.title+item.desc);
+    });
+
+  });
+
+
+
+
 }
 void testFuture(){
   Future future = new Future(() => null);
@@ -14,10 +27,12 @@ void testFuture(){
 
 // 刷新时数据请求
 Future<Null> _onRefresh() async {
-  return await Future.delayed(Duration(seconds: 3), () {
+   await Future.delayed(Duration(seconds: 3), () {
     print("过了三秒了");
 
   });
+  print("过了三秒了");
+
 }
 
   timeout() async {

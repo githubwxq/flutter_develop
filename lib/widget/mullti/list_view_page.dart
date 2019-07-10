@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_develop/model/TabItems.dart';
 import 'package:flutter_develop/widget/mullti/article_card.dart';
+
 //链接：https://www.jianshu.com/p/2d6bde7fbdda
+import 'package:flutter_develop/http/home_banner_model.dart';
+import 'package:flutter_develop/http/banner_dao.dart';
+import 'package:flutter_develop/widget/single/webview.dart';
 
 class ListViewPage extends StatefulWidget {
   @override
@@ -13,21 +18,26 @@ class ListViewPage extends StatefulWidget {
 
 class _ListViewPageState extends State<ListViewPage> {
   List<TabItems> datas = [];
+  List<BannerData> bannerList = [];
   int offset = 0;
   double scrollPixels = 0;
   ScrollController _scrollController = new ScrollController();
+
+  SwiperController _swiperController = new SwiperController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     datas.add(TabItems.single("test1"));
-    datas.add(TabItems.single("test2"));
-    datas.add(TabItems.single("test3"));
-    datas.add(TabItems.single("test4"));
-    datas.add(TabItems.single("test5"));
-    datas.add(TabItems.single("test6"));
-    datas.add(TabItems.single("test7"));
+//    datas.add(TabItems.single("test2"));
+//    datas.add(TabItems.single("test3"));
+//    datas.add(TabItems.single("test4"));
+//    datas.add(TabItems.single("test5"));
+//    datas.add(TabItems.single("test6"));
+//    datas.add(TabItems.single("test7"));
+
+    _loadBannerData();
 
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
@@ -36,12 +46,15 @@ class _ListViewPageState extends State<ListViewPage> {
         setState(() {
           if (offset == 0) {
           } else {
-            datas.add(TabItems.single("test8"));
-            datas.add(TabItems.single("test9"));
+            //加载更多
+//            datas.add(TabItems.single("test8"));
+//            datas.add(TabItems.single("test9"));
           }
         });
       }
     });
+
+    _swiperController.addListener(() {});
   }
 
   @override
@@ -91,14 +104,62 @@ class _ListViewPageState extends State<ListViewPage> {
   }
 
   _homePageItem(int index) {
-    return Center(
+    return index == 0
+        ? _banner()
+        : Center(
 //      child:   Text(datas[index].name,style: TextStyle(
 //        fontSize: 16,
 //        color: Colors.red,
 //        height: 60,
 //      ),
-      child: ArticleCard(datas[index]),
-    );
+            child: ArticleCard(datas[index]),
+          );
+  }
+
+//  创建banner
+  _banner() {
+    return bannerList.length > 0
+        ? Container(
+            height: 180,
+            child: Swiper(
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return WebView(
+                        url:
+                            "https://www.jianshu.com/p/c8509b6a7223?utm_source=oschina-app",
+                        title: "测试简书",
+                      );
+                    }));
+                  },
+                  child: new Image.network(
+                    bannerList[index].imagePath,
+                    fit: BoxFit.fill,
+                  ),
+                );
+              },
+              itemCount: bannerList.length,
+              autoplay: true,
+              pagination: new SwiperPagination(),
+              controller: _swiperController,
+              onIndexChanged: (index) {
+                setState(() {
+                  datas.add(TabItems.single("index"));
+                });
+              },
+            ),
+          )
+        : Container();
+  }
+
+  void _loadBannerData() {
+    BannerDao.fetch().then((model) {
+      setState(() {
+        bannerList = model.data;
+      });
+    });
   }
 }
 

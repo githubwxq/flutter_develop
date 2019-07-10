@@ -3,7 +3,7 @@ import 'package:flutter_develop/model/TabItems.dart';
 import 'package:flutter_develop/page/network_page.dart';
 import 'package:flutter_develop/widget/single.dart';
 import 'package:flutter_develop/widget/multi.dart';
-
+import 'package:flutter_develop/http/banner_dao.dart';
 class WidgetPage extends StatefulWidget {
   final String type;
 
@@ -36,6 +36,7 @@ class _WidgetPageState extends State<WidgetPage>
   void initState() {
     super.initState();
     _loadTabsData();
+   _loadBannerData();
   }
 
   @override
@@ -81,6 +82,18 @@ class _WidgetPageState extends State<WidgetPage>
   void _loadTabsData() {
     setState(() {
       _tabController = new TabController(length: tabItems.length, vsync: this);
+    });
+
+
+
+
+  }
+
+  void _loadBannerData() {
+    BannerDao.fetch().then((model){
+      model.data.forEach((item){
+        print("item$item");
+      });
     });
   }
 }
