@@ -3,7 +3,7 @@ import 'package:flutter_develop/page/widget_page.dart';
 
 
 import 'navigationbar/navigation_bar_tab.dart';
-
+import 'package:flutter_develop/page/login_page.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'noto', primaryColor: Colors.blue),
       home: NavigationBarTab(),
       routes: {'/HomePage': (context) => WidgetPage("1"),
-        '/LoginPage':(context) =>WidgetPage("2"),
+        '/LoginPage':(context) =>LoginPage(),
         '/RegisterPage':(context) =>WidgetPage("3")},
     );
   }
