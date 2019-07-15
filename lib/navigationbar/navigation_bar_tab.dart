@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_develop/page/widget_page.dart';
 import 'package:flutter_develop/page/network_page.dart';
+import 'package:flutter_develop/page/save_page.dart';
 
 class NavigationBarTab extends StatefulWidget {
   @override
@@ -42,7 +43,7 @@ class _NavigationBarTabState extends State<NavigationBarTab> {
         physics: NeverScrollableScrollPhysics(),
         controller: _controller,
         onPageChanged: _onPageChange,
-        children: <Widget>[WidgetPage("1"), NetWorkPage("2"), NetWorkPage("3"), NetWorkPage("4")],
+        children: <Widget>[WidgetPage("1"), NetWorkPage("2"), SavePage(), NetWorkPage("4")],
       ),
 
     );

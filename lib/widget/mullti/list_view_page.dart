@@ -126,17 +126,17 @@ class _ListViewPageState extends State<ListViewPage> {
                 return GestureDetector(
                   onTap: () {
 
-                    Navigator.pushNamed(context, '/LoginPage');
+//                    Navigator.pushNamed(context, '/LoginPage');
 
-//                    Navigator.of(context)
-//                        .push(MaterialPageRoute(builder: (context) {
-//                      return WebView(
-//                        url:
-//                            "https://www.jianshu.com/p/c8509b6a7223?utm_source=oschina-app",
-//                        title: "测试简书",
-//                      );
-//                    }
-//                    ));
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return WebView(
+                        url:
+                            "https://www.jianshu.com/p/c8509b6a7223?utm_source=oschina-app",
+                        title: "测试简书",
+                      );
+                    }
+                    ));
                   },
                   child: new Image.network(
                     bannerList[index].imagePath,

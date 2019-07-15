@@ -43,7 +43,8 @@ class _WidgetPageState extends State<WidgetPage>
   Widget build(BuildContext context) {
     // TODO: implement build
     return tabItems.length > 0
-        ? Column(
+        ?
+    Column(
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(top: 30),

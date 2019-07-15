@@ -45,6 +45,10 @@ class Book{
     publishingHouse = map[columnPublishingHouse];
   }
 
+  @override
+  String toString() {
+    return 'Book{id: $id, name: $name, author: $author, price: $price, publishingHouse: $publishingHouse}';
+  }
 
 
 }
