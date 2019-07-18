@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_develop/dio/HttpGo.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_develop/model/TabItems.dart';
 import 'package:flutter_develop/widget/mullti/article_card.dart';
@@ -128,15 +129,19 @@ class _ListViewPageState extends State<ListViewPage> {
 
 //                    Navigator.pushNamed(context, '/LoginPage');
 
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return WebView(
-                        url:
-                            "https://www.jianshu.com/p/c8509b6a7223?utm_source=oschina-app",
-                        title: "测试简书",
-                      );
-                    }
-                    ));
+//                    Navigator.of(context)
+//                        .push(MaterialPageRoute(builder: (context) {
+//                      return WebView(
+//                        url:
+//                            "https://www.jianshu.com/p/c8509b6a7223?utm_source=oschina-app",
+//                        title: "测试简书",
+//                      );
+//                    }
+//                    ));
+
+
+
+
                   },
                   child: new Image.network(
                     bannerList[index].imagePath,
@@ -164,6 +169,25 @@ class _ListViewPageState extends State<ListViewPage> {
         bannerList = model.data;
       });
     });
+
+
+    var getUrl = 'http://www.wanandroid.com/article/list/0/json';
+    print(getUrl);
+    getHttp() {
+//      FormData formData = FormData.from({'cid': 60});
+      HttpGo.getInstance().get(
+        getUrl,
+            (data) {
+
+          print(data);
+
+
+        },
+//        params: formData,
+      );
+    }
+
+
   }
 }
 

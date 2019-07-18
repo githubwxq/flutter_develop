@@ -38,8 +38,10 @@ dev_dependencies:
   shared_preferences: ^0.5.3+1
   flutter_staggered_grid_view: ^0.3.0
   sqflite: ^1.1.0
-
-
+  dio: ^1.0.13
+  json_serializable: ^2.0.0 # 解析
+  build_runner: ^1.1.2 # 解析
+#  fluttertoast: ^2.1.1
 
 
 # For information on the generic Dart part of this file, see the

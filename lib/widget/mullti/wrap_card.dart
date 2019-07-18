@@ -22,7 +22,40 @@ class _WrapCardState extends State<WrapCard> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(top: 10,bottom: 10,left: 18),
+          child: Text("wxq",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold)),
+        ),
+        Wrap(
+          children: <Widget>[
+             Padding(
+//               padding: EdgeInsets.fromLTRB(left, top, right, bottom),
+
+
+             )
+
+
+
+          ],
+
+        )
+        
+        
+        
+        
+        
+      ],
+      
+      
+      
+    );
   }
 
 }

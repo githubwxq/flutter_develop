@@ -1,8 +1,34 @@
 import 'dart:async';
-
+import 'package:flutter_develop/dio/HttpGo.dart';
+import 'dart:ui';
 printDailyNewsDigest() async {
   String news = await gatherNewsReports();
   print(news);
+
+//  getData();
+
+}
+
+void getData() {
+
+  var postUrl = 'http://www.wanandroid.com/user/login';
+  postHttp() {
+    var getUrl = 'http://www.wanandroid.com/article/list/0/json';
+    getHttp() {
+//      FormData formData = FormData.from({'cid': 60});
+      HttpGo.getInstance().get(
+        getUrl,
+            (data) {
+
+          print(data);
+
+
+        },
+//        params: formData,
+      );
+    }
+  }
+
 }
 
 main() {
